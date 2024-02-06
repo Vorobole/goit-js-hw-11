@@ -94,7 +94,12 @@ function fetchImages(q) {
   const url = BASE_URL + PARAMS;
 
   return fetch(url)
-    .then(response => response.json())
+    .then(response => {
+      if (!response.ok) {
+        throw new Error(response.status);
+      }
+      return response.json();
+    })
     .catch(error => {
       toastError(`Error fetching images: ${error}`);
       throw error;
