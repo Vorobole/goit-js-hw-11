@@ -5,48 +5,6 @@ body {
   background: #daebeb;
 }
 
-body::before {
-  content: '';
-  display: block;
-  position: fixed;
-  width: 100vw;
-  height: 100vh;
-  top: 0;
-  left: 0;
-  z-index: -1;
-  background-image: url('../img/flower-3.png'), url('../img/flower-16.png');
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-size: 15%, 15%;
-  background-position: right top, left top;
-}
-
-@font-face {
-  font-family: 'icomoon';
-  src: url('../fonts/icomoon.eot?gbz7oa');
-  src: url('../fonts/icomoon.eot?gbz7oa#iefix') format('embedded-opentype'),
-    url('../fonts/icomoon.ttf') format('truetype'),
-    url('../fonts/icomoon.woff') format('woff'),
-    url('../fonts/icomoon.svg?gbz7oa#icomoon') format('svg');
-  font-weight: normal;
-  font-style: normal;
-  font-display: block;
-}
-
-[class^='icon-'],
-[class*=' icon-'] {
-  font-family: 'icomoon' !important;
-  speak: never;
-  font-style: normal;
-  font-weight: normal;
-  font-variant: normal;
-  text-transform: none;
-  line-height: 1;
-
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
 .loader {
   border: 10px solid #f3f3f3;
   border-radius: 50%;

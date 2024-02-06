@@ -9,11 +9,11 @@ const searchForm = document.querySelector('.search-form');
 
 const loaderContainer = document.querySelector('.loader');
 
-const GALLERY_LINK = 'gallery-link';
+const lightbox = new SimpleLightbox(`.gallery-link`);
 
 searchForm.addEventListener('submit', function (event) {
   event.preventDefault();
-  const queryInput = event.target.elements.query.value;
+  const queryInput = event.target.elements.query.value.trim();
 
   if (queryInput === '') {
     return;
@@ -23,14 +23,12 @@ searchForm.addEventListener('submit', function (event) {
   loaderContainer.style.display = 'block';
 
   fetchImages(queryInput)
-    .then(function ({ hits, total }) {
+    .then(function ({ hits, totalHits }) {
       if (Array.isArray(hits) && hits.length > 0) {
         const galleryHTML = hits.map(createGallery).join('');
         galleryContainer.innerHTML = galleryHTML;
 
-        toastSuccess(`Was found: ${total} images`);
-
-        const lightbox = new SimpleLightbox(`.${GALLERY_LINK}`);
+        toastSuccess(`Was found: ${totalHits} images`);
 
         lightbox.refresh();
       } else {
@@ -113,7 +111,7 @@ function createGallery({
   downloads,
 }) {
   return `
-  <a href="${largeImageURL}" class="${GALLERY_LINK}">
+  <a href="${largeImageURL}" class="gallery-link">
      <figure>
       <img src="${webformatURL}" alt="${tags}" class="gallery-image">
       <figcaption class="gallery__figcaption">
